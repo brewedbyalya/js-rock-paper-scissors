@@ -13,6 +13,7 @@ const rockBtnEl = document.querySelector('#rock');
 const paperBtnEl = document.querySelector('#paper');
 const scissorsBtnEl = document.querySelector('#scissors');
 const resultDisplayEl = document.querySelector('#result-display');
+const reserBtnEl = document.querySelector('#reset');
 
 /*-------------------------------- Functions --------------------------------*/
 function getComputerChoice ()
@@ -43,15 +44,15 @@ function compare ()
     {
         msg = "You win!";
     }
-    else if (playerChoice === choices [1] && computerChoice === choices[0])
+    else if (playerChoice === choices[1] && computerChoice === choices[0])
     {
         msg = "You win!";
     }
-    else if (playerChoice === choices [2] && computerChoice === choices[1])
+    else if (playerChoice === choices[2] && computerChoice === choices[1])
     {
         msg = "You win!";
     }
-    else { msg = "You lost. Try again?"};
+    else { msg = "You lost."};
 }
 
 //updates html directly
@@ -61,7 +62,15 @@ function render ()
     and you chose ${playerChoice}. ${msg}`;
 }
 
+function resetGame ()
+{
+    playerChoice = null;
+    computerChoice = null;
+    resultDisplayEl.textContent = ``;
+}
+
 /*----------------------------- Event Listeners -----------------------------*/
 rockBtnEl.addEventListener('click', play);
 paperBtnEl.addEventListener('click', play);
 scissorsBtnEl.addEventListener('click', play);
+reserBtnEl.addEventListener('click', resetGame)
